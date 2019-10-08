@@ -1,9 +1,9 @@
-// let data = '{"question":"Do you prefer cities or nature?","options":[{"cities":"Do you prefer Arabic or Spanish?","options":[{"Arabic":"Do you prefer ancient or new cities?","option":["Middle East Studies","RIT Dubai - Direct Enroll"]},{"Spanish":"Do you prefer humanities or science?","option":["Advanced Liberal Arts - Barcelona","Santiago - Health Studies"]}]},{"nature":"Do you prefer mountains or islands?","options":[{"mountains":"Do you prefer South America or Aisa?","option":["Semester in Cusco - Universidad San Ignacio Loyola","Big Cats of the Himalayas: Tracking & Conservation"]},{"islands":"Do you prefer Caribbean or South Pacific?","option":["Marine Resource Studies","Protecting the Phoenix Islands"]}]}]}';
-//let data = '{"question":"Do you prefer cities or nature?","options":[{"question":"Do you prefer Araic or Spanish?","options":[{"question":"Do you prefer ancient or new cities?","option":["Middle East Studies","RIT Dubai - Direct Enroll"]},{"question":"Do you prefer humanities or science?","option":["Advanced Liberal Arts - Barcelona","Santiago - Health Studies"]}]},{"question":"Do you prefer mountains or islands?","options":[{"question":"Do you prefer South America or Aisa?","option":["Semester in Cusco - Universidad San Ignacio Loyola","Big Cats of the Himalayas: Tracking & Conservation"]},{"question":"Do you prefer Caribbean or South Pacific?","option":["Marine Resource Studies","Protecting the Phoenix Islands"]}]}]}',
 const TEMPLATE_PREFIX = "template_",
+	FINAL_CHOICE = "fin_",
 	OPTION_PREFIX = "opt_";
 
 let data = '{"question":"Do you prefer cities or nature?","options":[{"option":"cities","question":"Do you prefer Arabic or Spanish?","options":[{"option":"Arabic","question":"Do you prefer ancient or new cities?","options":[{"option":"ancient","options":["Middle East Studies"]},{"option":"New cities","options":["RIT Dubai - Direct Enroll"]}]},{"option":"Spanish","question":"Do you prefer humanities or science?","options":[{"option":"humanities","options":["Advanced Liberal Arts - Barcelona"]},{"option":"science","options":["Santiago - Health Studies"]}]}]},{"option":"nature","question":"Do you prefer mountains or islands?","options":[{"option":"mountains","question":"Do you prefer South America or Aisa?","options":[{"option":"South America","options":["Semester in Cusco - Universidad San Ignacio Loyola"]},{"option":"Aisa","options":["Big Cats of the Himalayas: Tracking & Conservation"]}]},{"option":"islands","question":"Do you prefer Caribbean or South Pacific?","options":[{"option":"Caribbean","options":["Marine Resource Studies"]},{"option":"South Pacific","options":["Protecting the Phoenix Islands"]}]}]}]}',
+	data1 = '{"question":"Do you prefer cities or nature?","options":[{"option":"cities","question":"Do you prefer Arabic or Spanish or Hindi?","options":[{"option":"Arabic","question":"Do you prefer ancient or new cities?","options":[{"option":"ancient","options":["Middle East Studies"]},{"option":"New cities","options":["RIT Dubai - Direct Enroll"]}]},{"option":"Hindi","question":"Do you prefer Mumbai or Delhi?","options":[{"option":"Mumbai","options":["IIT Powai"]},{"option":"Delhi","options":["IIT Delhi"]}]},{"option":"Spanish","question":"Do you prefer humanities or science?","options":[{"option":"humanities","options":["Advanced Liberal Arts - Barcelona"]},{"option":"science","options":["Santiago - Health Studies"]}]}]},{"option":"nature","question":"Do you prefer mountains or islands?","options":[{"option":"mountains","question":"Do you prefer South America or Aisa?","options":[{"option":"South America","options":["Semester in Cusco - Universidad San Ignacio Loyola"]},{"option":"Aisa","options":["Big Cats of the Himalayas: Tracking & Conservation"]}]},{"option":"islands","question":"Do you prefer Caribbean or South Pacific?","options":[{"option":"Caribbean","options":["Marine Resource Studies"]},{"option":"South Pacific","options":["Protecting the Phoenix Islands"]}]}]}]}',
 	parsed_obj = "",
 	currEleList = [],
 	dataList = new Map(),
@@ -11,12 +11,9 @@ let data = '{"question":"Do you prefer cities or nature?","options":[{"option":"
 
 
 function init() {
-	parseJSON();
-}
-
-function parseJSON() {
-	parsed_obj = JSON.parse(data);
-	createElementTemplate(TEMPLATE_PREFIX, parsed_obj.question, parsed_obj.options);
+	parsed_obj = JSON.parse(data1);
+	createElementTemplate(TEMPLATE_PREFIX + 0, parsed_obj.question, parsed_obj.options);
+	stack.push(parsed_obj);
 }
 
 function createElements(type, id, property, val) {
@@ -30,56 +27,50 @@ function createElements(type, id, property, val) {
 	return ele;
 }
 
+function addToStack() {
+
+}
+
+function removeChoiceFromDom() {
+	let ele = document.getElementById(FINAL_CHOICE);
+	if (ele) {
+		ele.remove();
+	}
+}
+
 function addOptionActionListener(ele) {
 	ele.addEventListener("click", function () {
-		var clickedButtonID = this.id;
-		var elementID = clickedButtonID.split("_")[1];
-		console.log("Clicked on element : " + elementID + " " + (currEleList.length));
-		if (elementID != currEleList.length - 1) {
+		var clickedButtonID = this.id,
+		 buttonSplit = clickedButtonID.split("_"),
+		 buttonID = buttonSplit[2],
+		 elementID = buttonSplit[1];
+
+		//Computing lengths of 2 arrays dynamically, as their lengths are being dynamically manipulated
+		// console.log(elementID, index);
+		if (currEleList.length - elementID > 0) {
+			removeChoiceFromDom();
 			for (let i = currEleList.length - 1; i > elementID; i--) {
 				document.getElementById(TEMPLATE_PREFIX + i).remove();
-				console.log("Removed - " + TEMPLATE_PREFIX + i);
 				currEleList.pop();
 				stack.pop();
-				// console.log(template.length + template);
-			}
+			} //recursive function to remove from stack
 		}
 
-		console.log("This is ", this.textContent);
-		if(0 === stack.length){
-			for (let i=0; i<parsed_obj.options.length; i++){
-				if(this.textContent === parsed_obj.options[i].option){
-					stack[stack.length]= parsed_obj.options[i];
-					break;
-				}
-			}
+		stack.push(stack[stack.length - 1].options[buttonID]);
+
+		if (stack[stack.length - 1].question) {
+			console.log("creating", TEMPLATE_PREFIX + (currEleList.length-1));
+			createElementTemplate((TEMPLATE_PREFIX + currEleList.length), stack[stack.length - 1].question, stack[stack.length - 1].options);
+		} else {
+			removeChoiceFromDom();
+			createElementTemplate(FINAL_CHOICE, stack[stack.length - 1].options[0], "");
+			stack.pop();
 		}
-		else{	
-			// console.log("Here2.1 ", stack[stack.length-1].question);	
-			for (let i=0; i<stack[stack.length-1].options.length; i++){
-				console.log("Loop matching: ", stack[stack.length-1]);
-				if(this.textContent === stack[stack.length-1].options[i].option){
-					console.log("Inside matched values ", stack[stack.length-1].options[i], stack[stack.length-1].options[i].question);
-					stack[stack.length]= stack[stack.length-1].options[i]; //lookup opt in context
-					console.log("Here " + stack[stack.length-1].options + this.textContent);
-					break;
-				}
-			}
-		}
-		if(stack[stack.length-1].question){
-			createElementTemplate(TEMPLATE_PREFIX, stack[stack.length-1].question, stack[stack.length-1].options);
-			console.log("printing stack " + stack.length, stack[stack.length-1].options);
-		}else{
-			console.log("Your selected choice is " + stack[stack.length-1].options[0] );z
-		}
-		// stack[stack.length]= {opt:this.textContent, context:stack[stack.length-1].context.options}; //lookup opt in context
 	});
 }
 
-function createElementTemplate(name, question, optionList) {
-	var index = currEleList.length,
-		eleName = name + index;
-	element = createElements("div", eleName),
+function createElementTemplate(eleName, question, optionList) {
+	var element = createElements("div", eleName),
 		rowEle = createElements("div", "", "class", "row"),
 		colEle = createElements("div", "", "class", "col s16 m6"),
 		cardEle = createElements("div", "", "class", "card"),
@@ -92,15 +83,14 @@ function createElementTemplate(name, question, optionList) {
 	var optLen = optionList.length;
 	if (optLen) {
 		for (let i = 0; i < optLen; i++) {
-			var opt = createElements("a", OPTION_PREFIX + index + "_" + i, "href" + "#");
+			var opt = createElements("a", OPTION_PREFIX + currEleList.length + "_" + i, "href", "#");
 			opt.innerHTML = optionList[i].option;
 			addOptionActionListener(opt);
 			optEle.appendChild(opt);
-			currEleList[index] = eleName;
-		}
-	}
 
-	// console.log(currEleList);
+		}
+		currEleList.push(eleName);
+	}
 
 	//append elements to DOM
 	element.appendChild(rowEle);
