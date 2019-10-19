@@ -1,0 +1,72 @@
+{
+	"question": "Which Semester do you want to go?",
+	"select": [{
+		"option": "Winter",
+		"question": "What type of study do you want?",
+		"select": [{
+			"option": "Independent Study",
+			"question": "Which langauge of study do you want?",
+			"select": [{
+				"option": "English",
+				"select": ["Independent Study Abroad"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3D718f0b8a2f6aa735ad6cc44eec656545"
+			}, {
+				"option": "Japanese",
+				"select": ["January in Tokyo - J.F. Oberlin University"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3D02c9f47d525207a51d72b6afe49b064d"
+			}]
+		}, {
+			"option": "Dedicated class",
+			"question": "Which among the following are you interested in?",
+			"select": [{
+				"option": "Arabic Language",
+				"select": ["January Islamic Civilization in History: France, Morocco & Spain CIS Abroad "],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3D423bcfb67fa043f1f91a054aee96a688"
+			}, {
+				"option": "Business",
+				"select": ["January Wine & Gastronomy: France & Spain"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3Da005f95fa99a6db566f32dc82c79a577"
+			}, {
+				"option": "Art History",
+				"select": ["SRISA January Session"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3Dd17b70c0455db88b7c719aec93b144bf"
+			}]
+		}]
+	}, {
+		"option": "Summer",
+		"question": "Which provider do you prefer?",
+		"select": [{
+			"option": "IES Abroad",
+			"question": "Which country do you want to visit?",
+			"select": [{
+				"option": "Netherlands",
+				"select": ["Amsterdam Summer – Society, Culture & Gender in Amsterdam"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3De98ffa9927e414caa3773c7f8c429e54"
+			}, {
+				"option": "France",
+				"select": ["Arles Summer - Study in Provence"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3Dc1d4868764b19e826531cbbd366f0ba2"
+			}, {
+				"option": "New Zealand",
+				"select": ["Auckland Summer Direct Enrollment - University of Auckland Film Production"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3D6272cf2e264731fe92f28a146bd79136"
+			}]
+		}, {
+			"option": "Arcadia University",
+			"question": "Where in Europe do you want to study?",
+			"select": [{
+				"option": "Greece",
+				"select": ["Marine Resource Studies"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3D2890d20812d26ea9acb7aaf709a6b9af"
+			}, {
+				"option": "England",
+				"select": ["Arcadia in London Summer"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3D91055b679803a471a5b9554f87bd4f49"
+			}, {
+				"option": "Ireland",
+				"select": ["Arcadia in Dublin Summer"],
+				"url": "https%3A%2F%2Frit-horizons.symplicity.com%2Findex.php%3Fs%3Dprograms%26mode%3Dform%26id%3Deec72045f65ffe050bbae4b4e4f14283"
+			}]
+		}]
+	}]
+}

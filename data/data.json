@@ -1,0 +1,62 @@
+{
+	"question": "Do you prefer cities or nature?",
+	"select": [{
+		"option": "cities",
+		"question": "Do you prefer Arabic or Spanish or Hindi?",
+		"select": [{
+			"option": "Arabic",
+			"question": "Do you prefer ancient or new cities?",
+			"select": [{
+				"option": "ancient",
+				"select": ["Middle East Studies"]
+			}, {
+				"option": "New cities",
+				"select": ["RIT Dubai - Direct Enroll"]
+			}]
+		}, {
+			"option": "Hindi",
+			"question": "Do you prefer Mumbai or Delhi?",
+			"select": [{
+				"option": "Mumbai",
+				"select": ["IIT Powai"]
+			}, {
+				"option": "Delhi",
+				"select": ["IIT Delhi"]
+			}]
+		}, {
+			"option": "Spanish",
+			"question": "Do you prefer humanities or science?",
+			"select": [{
+				"option": "humanities",
+				"select": ["Advanced Liberal Arts - Barcelona"]
+			}, {
+				"option": "science",
+				"select": ["Santiago - Health Studies"]
+			}]
+		}]
+	}, {
+		"option": "nature",
+		"question": "Do you prefer mountains or islands?",
+		"select": [{
+			"option": "mountains",
+			"question": "Do you prefer South America or Aisa?",
+			"select": [{
+				"option": "South America",
+				"select": ["Semester in Cusco - Universidad San Ignacio Loyola"]
+			}, {
+				"option": "Aisa",
+				"select": ["Big Cats of the Himalayas: Tracking & Conservation"]
+			}]
+		}, {
+			"option": "islands",
+			"question": "Do you prefer Caribbean or South Pacific?",
+			"select": [{
+				"option": "Caribbean",
+				"select": ["Marine Resource Studies"]
+			}, {
+				"option": "South Pacific",
+				"select": ["Protecting the Phoenix Islands"]
+			}]
+		}]
+	}]
+}
