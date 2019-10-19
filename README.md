@@ -1,11 +1,16 @@
 # ISTE754_InteractiveForm
 Academic Project - To create interactive form elements 
 
-refer to https://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript for json loading
 
-TO-DO
-1. Pointer not changing to arrow when clicking
-2. Replace innerHTML
-3. Read JSON from server
+1. Information Stored in Cookies - Date and Time page was last viewed 
+2. Information Stored in LocalStorage - Page visits
+3. Item in data that exceeds the base requirements (most of the options). Follow the following option path - 
+        Radio button -  Based on College Location 
+                        Summer
+                        Arcadia University (has 3 options)
+                        England 
+                        Arcadia in London Summer (has a link to the RIT program page)
+                        
+Header - But not really working (figuring out why)
 
-3. Stack to traverse through the JSON 
+http://serenity.ist.rit.edu/~vm7801/ISTE-754/InteractiveFormElements/ISTE754_InteractiveForm/

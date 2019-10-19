@@ -1,19 +1,80 @@
-<!DOCTYPE html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" href="styles.css"> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <title>RIT Study Abroad Program</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>RIT Study Abroad Application Form</title>
 </head>
 
-<body id="bodyTag" class="container" onload="init();">
-  <script src="script.js" differ></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<body class="container"  onload="init();">
+    <h1 class='header'>RIT Study Abroad Application Form</h1>
+    <p>Fill out the following form and the page will help you selecting the college of your choice</p>
+
+    <div class="section container" id="bodyTag">
+        <form id="myform" >
+            <section>
+                <h6>Personal Information</h6>
+            <div class="input-field">
+
+                <input id="email" type="email" value="" onchange="emailValidate();" required autofocus>
+                <label for="email" id="yemail">Your email</label>
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="fname" required autofocus>
+                <label for="fname">Your First Name</label>
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="lname" required autofocus>
+                <label for="lname">Your Last Name</label>
+            </div>
+
+            <div class="input-field">            
+                <input id="phone" type="tel" pattern="^\d{4}-\d{3}-\d{4}$" onchange="phoneValidate();" required >
+                <label for="phone" id='yphone'>Phone Number (format: xxxx-xxx-xxxx):</label><br/>
+            </div>
+
+            <br>
+        </section>
+
+        <section>
+            <h6 class="header">Helper Quiz to find the perfect college match</h6>
+            <p>Tell us how what options you want to see?</p>
+            <p id="dataSetSelection">
+                <label>
+                    <input type="radio" value="0" name="radio1">
+                    <span>Based on Majors</span>
+                </label>
+
+                <label>
+                    <input type="radio" value="1" name="radio1">
+                    <span>Based on College Location</span>
+                </label>
+
+            </p>
+        </section>
+
+        <!-- <section>
+            <button class="btn waves-effect waves-light" type="submit" name="action" onclick="init();">Submit
+                <i class="material-icons right">send</i>
+            </button> -->
+        </section>
+        </form>
+    </div>
+    <div class="visitHistory">
+
+    </div>
+    <script src="libraries/browserDetect.js"></script>
+    
+    <script src="libraries/cookies.js" differ></script>
+    <script src="script.js" differ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>

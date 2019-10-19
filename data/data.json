@@ -1,61 +1,61 @@
 {
 	"question": "Do you prefer cities or nature?",
-	"options": [{
+	"select": [{
 		"option": "cities",
 		"question": "Do you prefer Arabic or Spanish or Hindi?",
-		"options": [{
+		"select": [{
 			"option": "Arabic",
 			"question": "Do you prefer ancient or new cities?",
-			"options": [{
+			"select": [{
 				"option": "ancient",
-				"options": ["Middle East Studies"]
+				"select": ["Middle East Studies"]
 			}, {
 				"option": "New cities",
-				"options": ["RIT Dubai - Direct Enroll"]
+				"select": ["RIT Dubai - Direct Enroll"]
 			}]
 		}, {
 			"option": "Hindi",
 			"question": "Do you prefer Mumbai or Delhi?",
-			"options": [{
+			"select": [{
 				"option": "Mumbai",
-				"options": ["IIT Powai"]
+				"select": ["IIT Powai"]
 			}, {
 				"option": "Delhi",
-				"options": ["IIT Delhi"]
+				"select": ["IIT Delhi"]
 			}]
 		}, {
 			"option": "Spanish",
 			"question": "Do you prefer humanities or science?",
-			"options": [{
+			"select": [{
 				"option": "humanities",
-				"options": ["Advanced Liberal Arts - Barcelona"]
+				"select": ["Advanced Liberal Arts - Barcelona"]
 			}, {
 				"option": "science",
-				"options": ["Santiago - Health Studies"]
+				"select": ["Santiago - Health Studies"]
 			}]
 		}]
 	}, {
 		"option": "nature",
 		"question": "Do you prefer mountains or islands?",
-		"options": [{
+		"select": [{
 			"option": "mountains",
 			"question": "Do you prefer South America or Aisa?",
-			"options": [{
+			"select": [{
 				"option": "South America",
-				"options": ["Semester in Cusco - Universidad San Ignacio Loyola"]
+				"select": ["Semester in Cusco - Universidad San Ignacio Loyola"]
 			}, {
 				"option": "Aisa",
-				"options": ["Big Cats of the Himalayas: Tracking & Conservation"]
+				"select": ["Big Cats of the Himalayas: Tracking & Conservation"]
 			}]
 		}, {
 			"option": "islands",
 			"question": "Do you prefer Caribbean or South Pacific?",
-			"options": [{
+			"select": [{
 				"option": "Caribbean",
-				"options": ["Marine Resource Studies"]
+				"select": ["Marine Resource Studies"]
 			}, {
 				"option": "South Pacific",
-				"options": ["Protecting the Phoenix Islands"]
+				"select": ["Protecting the Phoenix Islands"]
 			}]
 		}]
 	}]
